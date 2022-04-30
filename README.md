@@ -6,4 +6,5 @@
    requests: 
    python3.7.12
    mysql 5
-   django 3.2# nilm
+   django 3.2
+   # nilm
