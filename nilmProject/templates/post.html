@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>文档标题</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+{{ post }}	
+<p>
+{{ category_list }}
+<p>
+{% for post in category_list %}
+    <div>
+    {{ forloop.counter }}    
+    {{ post.id }}
+    {{ post.pw }}
+    {{ post.device }}
+    {{ post.house }}
+    </div>
+{% endfor %}
+</body>
+</html>

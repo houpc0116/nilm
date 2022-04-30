@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+<script>
+    var source=new EventSource("/eventsource/");
+    source.onmessage=function(event)
+    {
+        document.getElementById("result").innerHTML+=event.data + "<br />";
+    };
+</script>
+</head>
+<body>
+
+<div id="result"></div>
+
+</body>
+</html>

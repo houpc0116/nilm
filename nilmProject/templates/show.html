@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>輸出</title>
+</head>
+<body>
+    <h1>信息輸出</h1>
+    <table>
+    <tr>
+        <th>帳號：</th>
+        <th>密碼：</th>
+        <th>DNN的輸出：</th>
+    </tr>
+    <tr>
+        <td> 
+        <img src="data:image/png;base64, {{ content }}" alt="Red dot" />
+         </td>
+    </tr>
+  <!--  {% for line in people_list %}
+    <tr>
+        <td>{{line.username}}</td>
+        <td>{{line.password}}</td>
+        <td>{{line.predict_result}}</td>
+        
+    </tr>
+    {% endfor %} -->
+    </table>
+</body>
+</html>

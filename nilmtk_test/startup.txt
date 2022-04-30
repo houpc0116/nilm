@@ -1,0 +1,25 @@
+[I 20:45:28.737 NotebookApp] Serving notebooks from local directory: /home/houpc16
+[I 20:45:28.737 NotebookApp] Jupyter Notebook 6.4.10 is running at:
+[I 20:45:28.737 NotebookApp] http://ubuntu-18-new:8888/?token=30180cc229286772d91ddf0e4c5e2e5fd98c2a0072bd0898
+[I 20:45:28.737 NotebookApp]  or http://127.0.0.1:8888/?token=30180cc229286772d91ddf0e4c5e2e5fd98c2a0072bd0898
+[I 20:45:28.737 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 20:45:28.742 NotebookApp] 
+    
+    To access the notebook, open this file in a browser:
+        file:///home/houpc16/.local/share/jupyter/runtime/nbserver-1762-open.html
+    Or copy and paste one of these URLs:
+        http://ubuntu-18-new:8888/?token=30180cc229286772d91ddf0e4c5e2e5fd98c2a0072bd0898
+     or http://127.0.0.1:8888/?token=30180cc229286772d91ddf0e4c5e2e5fd98c2a0072bd0898
+[I 20:47:38.550 NotebookApp] 302 GET /?token=30180cc229286772d91ddf0e4c5e2e5fd98c2a0072bd0898 (211.20.131.166) 0.840000ms
+[I 20:47:51.808 NotebookApp] Kernel started: 08453170-c517-48a4-b8bb-ba2739c42c4d, name: python3
+[IPKernelApp] ERROR | No such comm target registered: jupyter.widget.control
+[IPKernelApp] WARNING | No such comm: a05e53ca-8f27-417e-9a50-a17d7b962a4a
+2022-04-24 20:48:41.390297: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2022-04-24 20:48:41.397515: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2200140000 Hz
+2022-04-24 20:48:41.398357: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x55c00f3ff950 executing computations on platform Host. Devices:
+2022-04-24 20:48:41.398411: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): <undefined>, <undefined>
+2022-04-24 20:48:41.941107: W tensorflow/compiler/jit/mark_for_compilation_pass.cc:1412] (One-time warning): Not using XLA:CPU for cluster because envvar TF_XLA_FLAGS=--tf_xla_cpu_global_jit was not set.  If you want XLA:CPU, either set that envvar, or use experimental_jit_scope to enable XLA:CPU.  To confirm that XLA is active, pass --vmodule=xla_compilation_cache=1 (as a proper command-line flag, not via TF_XLA_FLAGS) or set the envvar XLA_FLAGS=--xla_hlo_profile.
+[I 20:49:52.315 NotebookApp] Saving file at /nilmtk_test/GRU_iawe_clothes_iron.ipynb
+[I 20:51:51.921 NotebookApp] Saving file at /nilmtk_test/GRU_iawe_clothes_iron.ipynb
+[I 20:53:52.336 NotebookApp] Saving file at /nilmtk_test/GRU_iawe_clothes_iron.ipynb
+[I 20:54:36.500 NotebookApp] Starting buffering for 08453170-c517-48a4-b8bb-ba2739c42c4d:49a5bd0bd7744a608f827ccb384acccb
