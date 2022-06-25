@@ -42,6 +42,23 @@ function getCurrentTime1(){
   return currentdate;
 }
 
+//顯示目前日期
+function getCurrentToday(){
+  var now=new Date();//生成日期物件(完整的日期資訊)
+  var y=now.getFullYear();//年份
+  var M=now.getMonth()+1>9?now.getMonth()+1:'0'+(now.getMonth()+1); //月份
+  var d=now.getDate()>9?now.getDate():'0'+now.getDate();//日期
+  var h=now.getHours();//小時
+  //var m=now.getMinutes()>9?now.getMinutes():'0'+now.getMinutes();//分鐘
+  //var s=now.getSeconds()>9?now.getSeconds():'0'+now.getSeconds();//秒
+  var currentdate = '';
+  currentdate = y+'-'+M+'-'+d;
+  
+  var obj = {'today':currentdate, 'hours':h};
+  return obj;
+}
+
+
 function initChartPromse(device){
   return new Promise(function(resolve, reject) {
     setTimeout(function() {
@@ -63,57 +80,80 @@ function initChartPromse(device){
               },
               success: function (obj) {
               //顯示月份統計
-                //console.log(obj);
-                //console.log(obj['week_date']);
+                console.log(obj);
+                //console.log(obj['week_date']); 
                 let Obj = obj['data'].sort(function (a, b) { return a.datetime > b.datetime ? 1 : -1; });  //排序 ASC
                 //console.log(Obj); 
                 //直線圖
-                for(var i=0; i<obj['week_date'].length; i++){
-                   //console.log(obj['week_date'][i]);
-                   newArrDate.push(obj['week_date'][i]); //儲存日期
-                   //找出相對應日期的資料
-                    var findObj = Obj.filter(function(item, index, array){
-                        if(item.datetime.indexOf(obj['week_date'][i]) != -1)
-                          return item;
-                    });
+                let todayObj = getCurrentToday();
+                //console.log(todayObj['hours']);
+                for(let i=0; i<=todayObj['hours']; i++){
+                    //console.log(i);
+                    let h = i<=9?'0'+i:i;
+                    newArrDate.push(h);
 
-                    if(findObj.length != 0){
-                      let kw = 0;
-                      findObj.forEach(function(item, index, array){
-                        kw += item['active'];
-                      });
-                      newArrCount.push(parseFloat(kw));
-                    }else{
-                      newArrCount.push(0);
-                    }
-                }
-                
-                /*
-                for(var i=1; i<= mondays; i++){
-                    if(i<10){ i = "0"+i}  //日期
-
-                    let showdate = ndate+"-"+i;
-                    newArrDate.push(showdate); //儲存日期
-                 
-                    //找出相對應日期的資料
-                    var findObj = Obj.filter(function(item, index, array){
-                        if(item.datetime.indexOf(showdate) != -1)
-                          return item;
+                    let filterDate = todayObj['today']+' '+h;
+                    //console.log(filterDate);
+                    var findObj = obj['data'].filter(function(item, index, array){
+                        if((item.datetime).indexOf(filterDate) != -1)
+                            return item;
                     });
                     //console.log(findObj);
-                    //findObj = findObj.sort(function (a, b) { return a.datetime < b.datetime ? 1 : -1; });  //排序 DESC
-                    //console.log(findObj[0]);
-                    if(findObj.length != 0){
-                      let kw = 0;
-                      findObj.forEach(function(item, index, array){
+                    let kw = 0;
+                    findObj.forEach(function(item, index, array){
                         kw += item['active'];
-                      });
-                      newArrCount.push(parseFloat(kw));
-                    }else{
-                    newArrCount.push(0);
+                    });
+                    newArrCount.push(kw);
                 }
-              }
-              */
+                //Pie
+/*
+                $.each(obj['data'], function(key, val){
+                  if(device == 'elec110'){
+                      if(labels.indexOf(machine) == -1 && val.device != 'elec110') {
+                          if(val.device == 'plug1-1'){
+                            labels.push('筆記型電腦');
+                          }else if(val.device == 'plug1-2'){
+                            labels.push('空氣清淨機');
+                          }
+                         //labels.push(machine);
+                         //顏色
+                         getColor = randomColor();
+                         color.push(getColor);
+                         str += '<i class="fas fa-circle" style="color:'+getColor+'"></i>'+machine;
+                      }
+                  }
+                });
+*/
+                //筆記型電腦
+                let total = 0;
+                var findObj = obj['data'].filter(function(item, index, array){
+                        if(item.device == 'plug1-1')
+                          return item;
+                  });
+                for(let i=0; i<findObj.length; i++){
+                  total += findObj[i]['active'];
+                }
+                labels.push('筆記型電腦');
+                datas4.push(total);
+                //顏色
+                getColor = "#4e73df";
+                color.push(getColor);
+                str += '<i class="fas fa-circle" style="color:'+getColor+'"></i>筆記型電腦';
+                //空氣清淨機
+                let total1 = 0;
+                var findObj = obj['data'].filter(function(item, index, array){
+                        if(item.device == 'plug1-2')
+                          return item;
+                  });
+                for(let i=0; i<findObj.length; i++){
+                  total1 += findObj[i]['active'];
+                }
+                labels.push('空氣清淨機');
+                datas4.push(total1);
+                //顏色
+                getColor = "#1cc88a";
+                color.push(getColor);
+                str += '<i class="fas fa-circle" style="color:'+getColor+'"></i>空氣清淨機';
               },
               error: function (error) {
                 console.log(error);
@@ -164,15 +204,17 @@ function initReddChartPromse(house){
           });
           //Pie
           //console.log(obj['data1']);
-          let getColor = '';
+          //let getColor = '';
+          color =['#4e73df','#1cc88a','#36b9cc'];
+          let i =0;
           $.each(obj['data1'], function(key, val){
-             dataTime.push(val.datetime);
-             labels.push(val.device);
-             datas3.push(val.pw);
-             getColor = randomColor();
-             color.push(getColor);
-             //console.log(getColor);
-             str += '<i class="fas fa-circle" style="color:'+getColor+'"></i>'+val.device;
+            dataTime.push(val.datetime);
+            labels.push(val.device);
+            datas3.push(val.pw);
+             
+            str += '<i class="fas fa-circle" style="color:'+color[i]+'"></i>'+val.device;
+
+            i+=1;
           });
           //console.log(randomColor());
         },
@@ -206,7 +248,7 @@ function initUKChartPromse(house){
           xhr.setRequestHeader("X-CSRFToken", csrftoken);
         },
         success: function (obj) {
-          console.log(obj);
+          //console.log(obj);
           //console.log(obj['data1']);
           let Obj = obj['data'].sort(function (a, b) { return a.datetime > b.datetime ? 1 : -1; });  //排序 ASC
           //console.log(Obj);
@@ -219,8 +261,64 @@ function initUKChartPromse(house){
             //}
           });
           //Pie
-          let getColor = '';
-          console.log(obj['data1']);
+          //let getColor = '';
+          //console.log(obj['data1']);
+          //let getColor = '';
+          let total = 0;
+/*
+          $.each(obj['data1'], function(key, val){
+            if(labels.indexOf(val.device) == -1 ) {
+              labels.push(val.device);
+              //顏色
+              getColor = randomColor();
+              color.push(getColor);
+              str += '<i class="fas fa-circle" style="color:'+getColor+'"></i>'+val.device;
+            }
+          });
+*/          
+          //洗衣機
+          var findObj = obj['data1'].filter(function(item, index, array){
+                if(item.device == 'washing_machine_5')
+                  return item;
+              });
+          for(let i=0; i<findObj.length; i++){
+              total += findObj[i]['pw'];
+          }
+          labels.push('洗衣機');
+          datas3.push(total);
+          //顏色
+          getColor = "#4e73df";
+          color.push(getColor);
+          str += '<i class="fas fa-circle" style="color:'+getColor+'"></i>洗衣機';
+          //水壶
+          var findObj = obj['data1'].filter(function(item, index, array){
+                if(item.device == 'kettle_10')
+                  return item;
+              });
+          for(let i=0; i<findObj.length; i++){
+              total += findObj[i]['pw'];
+          }
+          labels.push('燙斗');
+          datas3.push(total);
+          //顏色
+          getColor = "#1cc88a";
+          color.push(getColor);
+          str += '<i class="fas fa-circle" style="color:'+getColor+'"></i>燙斗';
+          //微波爐
+          var findObj = obj['data1'].filter(function(item, index, array){
+                  if(item.device == 'microwave_13')
+                    return item;
+              });
+          for(let i=0; i<findObj.length; i++){
+              total += findObj[i]['pw'];
+          }
+          labels.push('冰箱');
+          datas3.push(total);
+          //顏色
+          getColor = "#36b9cc";
+          color.push(getColor);
+          str += '<i class="fas fa-circle" style="color:'+getColor+'"></i>冰箱';
+          /*
           $.each(obj['data1'], function(key, val){
              dataTime.push(val.datetime);
              labels.push(val.device);
@@ -228,7 +326,7 @@ function initUKChartPromse(house){
              getColor = randomColor();
              color.push(getColor);
              str += '<div><i class="fas fa-circle" style="color:'+getColor+'"></i>'+val.device+'</div>';
-          }); 
+          }); */ 
           //console.log(randomColor());
         },
         error: function (error) {
@@ -240,12 +338,13 @@ function initUKChartPromse(house){
   });
 }
 
-function initiAWEChartPromse(device){
+function initiAWEChartPromse(){
    return new Promise(function(resolve, reject) {
       setTimeout(function() {
           let domain = window.location.hostname;
           let port = window.location.port;
-          let url = 'http://'+domain+':'+port+'/iawedataset/?device='+device;
+          //let url = 'http://'+domain+':'+port+'/iawedataset/?device='+device;
+          let url = 'http://'+domain+':'+port+'/iawedataset/';
           $.ajax({
             //url: '/api/sensor/?device='+device,
             url: url,
@@ -260,18 +359,74 @@ function initiAWEChartPromse(device){
               xhr.setRequestHeader("X-CSRFToken", csrftoken);
             },
             success: function (obj) {
-              //console.log(obj);
+              console.log(obj);
+              
               let Obj = obj['data'].sort(function (a, b) { return a.datetime > b.datetime ? 1 : -1; });  //排序 ASC
-              //直線圖
-            /*  obj['data'].forEach(function(value, key, array){
-                 console.log(value);
-              }); */
+              //Line
               $.each(Obj, function(key, val){
-                  yAxis.push(val.datetime);
-                  datas1.push( parseFloat(val.active) );
-                  //datas2.push( parseFloat(val.cu) );
+                //console.log(val);
+                if(val.device == 'mains_1'){
+                  yAxis.push( val.datetime );
+                  datas1.push( val.active );
+                }else{
+                  datas2.push( val.active );
+                }
               });
-
+              //Pie
+              let getColor = '';
+              let total = 0;
+            /*  $.each(obj['data1'], function(key, val){
+                  if(labels.indexOf(val.device) == -1 ) {
+                    labels.push(val.device);
+                    //顏色
+                    getColor = randomColor();
+                    color.push(getColor);
+                    str += '<i class="fas fa-circle" style="color:'+getColor+'"></i>'+val.device;
+                  }
+              });
+              */
+              //洗衣機
+              var findObj = obj['data1'].filter(function(item, index, array){
+                        if(item.device == 'washing_6')
+                          return item;
+                  });
+              for(let i=0; i<findObj.length; i++){
+                  total += findObj[i]['active'];
+              }
+              labels.push('洗衣機');
+              datas3.push(total);
+              //顏色
+              getColor = "#4e73df";
+              color.push(getColor);
+              str += '<i class="fas fa-circle" style="color:'+getColor+'"></i>洗衣機';
+              //燙斗
+              var findObj = obj['data1'].filter(function(item, index, array){
+                        if(item.device == 'iron_8')
+                          return item;
+                  });
+              for(let i=0; i<findObj.length; i++){
+                  total += findObj[i]['active'];
+              }
+              labels.push('燙斗');
+              datas3.push(total);
+              //顏色
+              getColor = "#1cc88a";
+              color.push(getColor);
+              str += '<i class="fas fa-circle" style="color:'+getColor+'"></i>燙斗';
+              //冰箱
+              var findObj = obj['data1'].filter(function(item, index, array){
+                        if(item.device == 'fridge_3')
+                          return item;
+                  });
+              for(let i=0; i<findObj.length; i++){
+                  total += findObj[i]['active'];
+              }
+              labels.push('冰箱');
+              datas3.push(total);
+              //顏色
+              getColor = "#36b9cc";
+              color.push(getColor);
+              str += '<i class="fas fa-circle" style="color:'+getColor+'"></i>冰箱';
             },
             error: function (error) {
               console.log(error);
@@ -398,6 +553,12 @@ function showAppliancesList(){
     $('#appliances').append("<option value='fridge'>冰箱</option>");
     $('#appliances').append("<option value='wash_dryer'>洗衣機</option>");
 
+  }else if(dataset == 'sensor'){
+    $('#appliances').html('');
+    $('#appliances').append("<option>--請選擇電器--</option>");
+    $('#appliances').append("<option value='notebook'>筆記型電腦</option>");
+    $('#appliances').append("<option value='air'>空氣清淨機</option>");
+
   }
 }
 
@@ -446,8 +607,12 @@ function sendFrom(){
            let urlImg = 'http://'+domain+':'+port+'/static/analyze/'+data['image']+'.png';
            $('#resultimg').attr('src',''+urlImg+'');
            //性能指標
-           var el = document.getElementById("resultmsg");
-           el.innerHTML = data['accuracy']+'<br>'+data['precision']+'<br>'+data['recall']+'<br>'+data['f1score']+'<br>'+data['relativerror']+'<br>'+data['meanabsoluterror'];
+           let value = data['content'].split(":");
+           $('#dataTable').show();
+           $('.rel').text(value[0]);
+           $('.mean').text(value[1]);
+           //var el = document.getElementById("resultmsg");
+           //el.innerHTML = data['accuracy']+'<br>'+data['precision']+'<br>'+data['recall']+'<br>'+data['f1score']+'<br>'+data['relativerror']+'<br>'+data['meanabsoluterror'];
            //$('#resultmsg').html(data['accuracy']+data['precision']+data['recall']);
         }
      },

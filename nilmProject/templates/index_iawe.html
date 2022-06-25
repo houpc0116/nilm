@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+
   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+  <meta name="description" content=''>
+  <meta name="author" content=''>
 
   <title>NILM - Dashboard</title>
   {% load static %}
@@ -26,7 +29,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/sensor/?device=elec110">
         <!--<div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>-->
@@ -52,11 +55,12 @@
       </div>
 
       <!-- Nav Item - Charts -->
-      <!-- <li class="nav-item">
+     <!-- <li class="nav-item">
         <a class="nav-link" href="database.html">
           <i class="fas fa-fw fa-database"></i>
-          <span>資料庫</span></a>
+          <span>資料集</span></a>
       </li> -->
+      <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-cog"></i>
@@ -353,46 +357,47 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
-{% block content %}
+
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800"><!--House1--><span class='title'></span> Dashboard</h1>
-            <span class="pl-3">last update: <span class='dateTime'>{{ category_list.obj.0.datetime|date:"Y-m-d H:i:s" }}</span></span>
+            <h1 class="h3 mb-0 text-gray-800">House1 Dashboard</h1>
             <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
             
-            <ul class="navbar-nav ml-auto">
+           <!-- <ul class="navbar-nav ml-auto">
               <li class="nav-item dropdown">
                <!-- <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   House
                 </a> -->
-                <button class="btn btn-primary dropdown-toggle" type="button" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <!--House-->附載裝置
+              <!--  <button class="btn btn-primary dropdown-toggle" type="button" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      House
                 </button>
                 <div class="dropdown-menu dropdown-menu-right animated--fade-in" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="/iawe/?device=mains_1">MAINS 1</a>
-                  <a class="dropdown-item" href="/iawe/?device=mains_2">MAINS 2</a>
-                  <a class="dropdown-item" href="/iawe/?device=fridge_3">冰箱</a>
-                  <a class="dropdown-item" href="/iawe/?device=washing_6">洗衣機</a>
-                  <a class="dropdown-item" href="/iawe/?device=iron_8">熨斗</a>
-                <!--  <a class="dropdown-item" href="#">House 5</a>
-                  <a class="dropdown-item" href="#">House 6</a> -->
+                  <a class="dropdown-item" href="/redd/?houseId=1">House 1</a>
+                  <a class="dropdown-item" href="/redd/?houseId=2">House 2</a>
+                  <a class="dropdown-item" href="/redd/?houseId=3">House 3</a>
+                  <a class="dropdown-item" href="/redd/?houseId=4">House 4</a>
+                  <a class="dropdown-item" href="/redd/?houseId=5">House 5</a>
+                  <a class="dropdown-item" href="/redd/?houseId=6">House 6</a>
                   <!--<div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="#">Something else here</a>-->
-                </div>
+              <!--  </div>
               </li>
-            </ul>
+            </ul> -->
           </div>
 
           <!-- Content Row -->
+          {% block content %}
           <div class="row">
             <!-- Earnings (Monthly) Card Example -->
-            <div class="col-3 mb-4">
+            {% for post in category_list %}
+            <div class="col-xs-12 col-lg-3 mb-4">
               <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-md font-weight-bold text-primary text-uppercase mb-1"><!--Earnings (Monthly)--> <!--Mains1-->電壓</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800"><!--113.32--><span class='vo'>{{ category_list.obj.0.vo|floatformat:"2" }}</span> V</div>
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><!--Earnings (Monthly)--><!-- Mains1-->{{ post.device }}</div>
+                      <div class="pb-2">{{ post.obj.0.datetime|date:"Y-m-d H:i:s" }} </div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ post.obj.0.active }} w </div>
                     </div>
                     <!--<div class="col-auto">
                       <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -402,191 +407,116 @@
               </div>
             </div>
 
-            <div class="col-3 mb-4">
-              <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-md font-weight-bold text-primary text-uppercase mb-1"><!--Earnings (Monthly)--> <!--Mains1-->電流</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800"><!--0.44--><span class='cu'>{{ category_list.obj.0.cu|floatformat:"2" }}</span> A</div>
-                    </div>
-                    <!--<div class="col-auto">
-                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                    </div> -->
-                  </div>
-                </div>
-              </div>
-            </div>
 
-            <!-- Earnings (Monthly) Card Example -->
-            <div class="col-3 mb-4">
-              <div class="card border-left-success shadow h-100 py-2">
+           <div class="col-xs-12 col-lg-3 mb-4">
+                  <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-md font-weight-bold text-success text-uppercase mb-1"><!--Earnings (Monthly)--> <!--Mains1-->有效功率</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800"><span class='activeVal'>{{ category_list.obj.0.active|floatformat:"2" }}</span> w</div>
-                    </div>
-                    <!--<div class="col-auto">
-                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                    </div> -->
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Earnings (Monthly) Card Example -->
-            <div class="col-3 mb-4">
-              <div class="card border-left-warning shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-md font-weight-bold text-warning text-uppercase mb-1"><!--Mains2-->無效功率</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800"><span class='reactive'>{{ category_list.obj.0.reactive|floatformat:"2" }}</span> var</div>
-                    </div>
-                   <!-- <div class="col-auto">
-                      <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                    </div> -->
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-4 mb-4">
-              <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-md font-weight-bold text-success text-uppercase mb-1">電容率</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">
-                        <span class='f'>{{ category_list.obj.0.f|floatformat:"2" }}</span>
-                      </div>
-                    </div>
-                    <!--<div class="col-auto">
-                      <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                    </div>-->
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Pending Requests Card Example -->
-            <div class="col-4 mb-4">
-              <div class="card border-left-warning shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-md font-weight-bold text-warning text-uppercase mb-1">功率因數</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">
-                        <span class='pf'>{{ category_list.obj.0.pf|floatformat:"2" }}</span>
-                      </div>
-                    </div>
-                    <!--<div class="col-auto">
-                      <i class="fas fa-comments fa-2x text-gray-300"></i>
-                    </div> -->
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Pending Requests Card Example -->
-            <div class="col-4 mb-4">
-              <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-md font-weight-bold text-primary text-uppercase mb-1">
-                      <!-- 功率因數-->
-                      MAINS 1
-                      </div>
+                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1"><!--Earnings (Monthly)--><!-- Mains1-->{{ post.device }}</div>
                       <div class="pb-2">總用電量</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">
-                        <span class='total'>{{ category_list.sum.active__sum|floatformat:"2" }}</span> w
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ post.sum.active__sum|floatformat:"2" }} w </div>
+                    </div>
+                    <!--<div class="col-auto">
+                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                    </div> -->
+                  </div>
+                </div>
+              </div>
+              </div>
+
+            {% endfor %}
+          </div>
+          {% endblock  %}
+          <!-- Content Row -->
+          <!-- Content1 Row -->
+          {% block content1 %}
+          <div class="row">
+            {% for post in category_list %}
+              <div class="col-xs-12 col-lg-3 mb-4">
+                  <div class="card border-left-warning shadow h-100 py-2">
+                    <div class="card-body">
+                      <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                          <div class="text-xs font-weight-bold text-warning text-uppercase mb-1"><!--Earnings (Monthly)--><!-- Mains1-->{{ post.device }}</div>
+                          <div class="pb-2"><!-- 4 -->5月份用電量</div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800"><!--{{ post.april.pw__sum }}--> {{ post.may.active__sum |floatformat:"2" }} <!--{{ forloop.counter0 }}--> w </div>
+                     <!-- <div class="pb-2">5月份用電量</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ post.may.pw__sum }} w </div> -->
+                        </div>
+                    <!--<div class="col-auto">
+                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                    </div> -->
                       </div>
                     </div>
-                    <!--<div class="col-auto">
-                      <i class="fas fa-comments fa-2x text-gray-300"></i>
-                    </div> -->
                   </div>
                 </div>
-              </div>
-            </div>
-            <!-- Earnings (Monthly) Card Example -->
-            <div class="col-3 mb-4">
-              <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-md font-weight-bold text-success text-uppercase mb-1"><!--Earnings (Monthly)--> <!--Mains1-->5月份用電量</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800"><span class='may'>{{ category_list.may.active__sum|floatformat:"2" }}</span> w</div>
-                    </div>
+                <div class="col-xs-12 col-lg-3 mb-4">
+                  <div class="card border-left-warning shadow h-100 py-2">
+                    <div class="card-body">
+                      <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                          <div class="text-xs font-weight-bold text-warning text-uppercase mb-1"><!--Earnings (Monthly)--><!-- Mains1-->{{ post.device }}</div>
+                          <div class="pb-2"><!-- 4 -->6月份用電量</div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800"><!--{{ post.april.pw__sum }}--> {{ post.jun.active__sum |floatformat:"2" }} <!--{{ forloop.counter0 }}--> w </div>
+                     <!-- <div class="pb-2">5月份用電量</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ post.may.pw__sum }} w </div> -->
+                        </div>
                     <!--<div class="col-auto">
                       <i class="fas fa-calendar fa-2x text-gray-300"></i>
                     </div> -->
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            <!-- Earnings (Monthly) Card Example -->
-            <div class="col-3 mb-4">
-              <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-md font-weight-bold text-success text-uppercase mb-1"><!--Earnings (Monthly)--> <!--Mains1-->6月份用電量</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800"><span class='june'>{{ category_list.june.active__sum|floatformat:"2" }}</span> w</div>
-                    </div>
+                <div class="col-xs-12 col-lg-3 mb-4">
+                  <div class="card border-left-warning shadow h-100 py-2">
+                    <div class="card-body">
+                      <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                          <div class="text-xs font-weight-bold text-warning text-uppercase mb-1"><!--Earnings (Monthly)--><!-- Mains1-->{{ post.device }}</div>
+                          <div class="pb-2"><!-- 4 -->7月份用電量</div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800"><!--{{ post.april.pw__sum }}--> {{ post.july.active__sum |floatformat:"2" }} <!--{{ forloop.counter0 }}--> w </div>
+                     <!-- <div class="pb-2">5月份用電量</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ post.may.pw__sum }} w </div> -->
+                        </div>
                     <!--<div class="col-auto">
                       <i class="fas fa-calendar fa-2x text-gray-300"></i>
                     </div> -->
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            <!-- Earnings (Monthly) Card Example -->
-            <div class="col-3 mb-4">
-              <div class="card border-left-warning shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-md font-weight-bold text-warning text-uppercase mb-1"><!--Earnings (Monthly)--> <!--Mains1-->7月份用電量</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800"><span class='july'>{{ category_list.July.active__sum|floatformat:"2" }}</span> w</div>
-                    </div>
+                <div class="col-xs-12 col-lg-3 mb-4">
+                  <div class="card border-left-warning shadow h-100 py-2">
+                    <div class="card-body">
+                      <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                          <div class="text-xs font-weight-bold text-warning text-uppercase mb-1"><!--Earnings (Monthly)--><!-- Mains1-->{{ post.device }}</div>
+                          <div class="pb-2"><!-- 4 -->8月份用電量</div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800"><!--{{ post.april.pw__sum }}--> {{ post.aug.active__sum |floatformat:"2" }} <!--{{ forloop.counter0 }}--> w </div>
+                     <!-- <div class="pb-2">5月份用電量</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ post.may.pw__sum }} w </div> -->
+                        </div>
                     <!--<div class="col-auto">
                       <i class="fas fa-calendar fa-2x text-gray-300"></i>
                     </div> -->
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Earnings (Monthly) Card Example -->
-            <div class="col-3 mb-4">
-              <div class="card border-left-warning shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-md font-weight-bold text-warning text-uppercase mb-1"><!--Earnings (Monthly)--> <!--Mains1-->8月份用電量</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800"><span class='july'>{{ category_list.Aug.active__sum|floatformat:"2" }}</span> w</div>
+                      </div>
                     </div>
-                    <!--<div class="col-auto">
-                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                    </div> -->
                   </div>
                 </div>
-              </div>
-            </div>
-
+            {% endfor %}
           </div>
-
-          <!-- Content Row -->
-
+          {% endblock  %}
+          <!-- Content1 Row End-->
           <div class="row">
 
             <!-- Area Chart -->
-            <div class="col-4">
+            <div class="col-xs-12 col-xl-8 col-lg-7">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">即時資訊趨勢</h6>
+                  <h6 class="m-0 font-weight-bold text-primary"><!--Overview-->即時資訊趨勢</h6>
                   <div class="dropdown no-arrow">
                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -603,14 +533,59 @@
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="chart-area">
+                    <!--<div class="loading"></div>-->
                     <canvas id="myAreaChart"></canvas>
                   </div>
                 </div>
               </div>
             </div>
-            
-            <!-- Bar Chart -->
-            <div class="col-4">
+
+            <!-- Pie Chart -->
+            <div class="col-xs-12 col-xl-4 col-lg-5">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary"><!--Revenue Sources-->設備用電分布</h6>
+                  <div class="dropdown no-arrow">
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                      <div class="dropdown-header">Dropdown Header:</div>
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                  </div>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <div class="chart-pie pt-4 pb-2">
+                    <div class='pie-datetime'></div>
+                    <canvas id="myPieChart"></canvas>
+                  </div>
+                  <!-- <div class="mt-4 text-center small mark"> -->
+                  <div class="mt-4 text-center mark">
+                    <!--<span class="mr-2">
+                      <i class="fas fa-circle text-primary"></i> refrigerator
+                    </span>
+                    <span class="mr-2">
+                      <i class="fas fa-circle text-success"></i> dishwaser
+                    </span>
+                    <span class="mr-2">
+                      <i class="fas fa-circle text-info"></i> microwave
+                    </span>-->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Content Row -->
+          <div class="row">
+          <!-- Bar Chart -->
+            <div class="col-xs-12 col-lg-6">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -637,9 +612,8 @@
                 </div>
               </div>
             </div>
-
             <!-- Bar Chart -->
-            <div class="col-4">
+            <div class="col-xs-12 col-lg-6">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -668,158 +642,18 @@
             </div>
 
           </div>
-
-          <!-- Content Row -->
-          <div class="row">
-
-            <!-- Content Column -->
-            <div class="col-lg-6 mb-4">
-
-              <!-- Project Card Example -->
-             <!-- <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
-                </div>
-                <div class="card-body">
-                  <h4 class="small font-weight-bold">Server Migration <span class="float-right">20%</span></h4>
-                  <div class="progress mb-4">
-                    <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <h4 class="small font-weight-bold">Sales Tracking <span class="float-right">40%</span></h4>
-                  <div class="progress mb-4">
-                    <div class="progress-bar bg-warning" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <h4 class="small font-weight-bold">Customer Database <span class="float-right">60%</span></h4>
-                  <div class="progress mb-4">
-                    <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <h4 class="small font-weight-bold">Payout Details <span class="float-right">80%</span></h4>
-                  <div class="progress mb-4">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <h4 class="small font-weight-bold">Account Setup <span class="float-right">Complete!</span></h4>
-                  <div class="progress">
-                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </div> -->
-
-              <!-- Color System -->
-             <!-- <div class="row">
-                <div class="col-lg-6 mb-4">
-                  <div class="card bg-primary text-white shadow">
-                    <div class="card-body">
-                      Primary
-                      <div class="text-white-50 small">#4e73df</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                  <div class="card bg-success text-white shadow">
-                    <div class="card-body">
-                      Success
-                      <div class="text-white-50 small">#1cc88a</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                  <div class="card bg-info text-white shadow">
-                    <div class="card-body">
-                      Info
-                      <div class="text-white-50 small">#36b9cc</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                  <div class="card bg-warning text-white shadow">
-                    <div class="card-body">
-                      Warning
-                      <div class="text-white-50 small">#f6c23e</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                  <div class="card bg-danger text-white shadow">
-                    <div class="card-body">
-                      Danger
-                      <div class="text-white-50 small">#e74a3b</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                  <div class="card bg-secondary text-white shadow">
-                    <div class="card-body">
-                      Secondary
-                      <div class="text-white-50 small">#858796</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                  <div class="card bg-light text-black shadow">
-                    <div class="card-body">
-                      Light
-                      <div class="text-black-50 small">#f8f9fc</div>
-                    </div>
-                  </div>
-              </div>
-              <div class="col-lg-6 mb-4">
-                <div class="card bg-dark text-white shadow">
-                  <div class="card-body">
-                      Dark
-                      <div class="text-white-50 small">#5a5c69</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            </div>
-
-            <div class="col-lg-6 mb-4"> -->
-
-              <!-- Illustrations -->
-            <!--  <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
-                </div>
-                <div class="card-body">
-                  <div class="text-center">
-                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="img/undraw_posting_photo.svg" alt="">
-                  </div>
-                  <p>Add some quality, svg illustrations to your project courtesy of <a target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a constantly updated collection of beautiful svg images that you can use completely free and without attribution!</p>
-                  <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on unDraw &rarr;</a>
-                </div>
-              </div> -->
-  
-              <!-- Approach -->
-            <!--  <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
-                </div>
-                <div class="card-body">
-                  <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce CSS bloat and poor page performance. Custom CSS classes are used to create custom components and custom utility classes.</p>
-                  <p class="mb-0">Before working with this theme, you should become familiar with the Bootstrap framework, especially the utility classes.</p>
-                </div>
-              </div>
-
-            </div>
-          </div> -->
-
-        </div>
-        <!-- /.container-fluid -->
-
-      </div>
       <!-- End of Main Content -->
 
       <!-- Footer -->
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2020</span>
+            <span>Copyright &copy; NILM 2021</span>
           </div>
         </div>
       </footer>
       <!-- End of Footer -->
-      {% endblock %}
+
     </div>
     <!-- End of Content Wrapper -->
 
@@ -862,45 +696,50 @@
   <script src="{% static 'js/nilm.js' %}"></script>
   <!-- Page level plugins -->
   <script src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
-  {% csrf_token %}
-  <script>
-    let urlParams = new URLSearchParams(window.location.search);
-    let device =urlParams.get('device');
-    if(device == 'mains_1'){
-        $('.title').text('MAINS 1');
-    }else if(device == 'mains_2'){
-        $('.title').text('MAINS 2');
-    }else if(device == 'fridge_3'){
-        $('.title').text('冰箱');
-    }else if(device == 'washing_6'){
-        $('.title').text('洗衣機');
-    }else{
-        $('.title').text('熨斗');
-    }
-    //設置csrfmiddlewaretoken
-    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
 
-    var ctx = document.getElementById("myAreaChart");  //折線圖div
-    var ctxBar = document.getElementById("myBarChart").getContext('2d');
-    var ctxBar1 = document.getElementById("myBarChart1").getContext('2d');
-    //Line
-    var yAxis = new Array();      //宣告陣列, 放時間
-    var datas1 = new Array();     //宣告陣列, 放mains1耗能
+  <!-- Page level custom scripts -->
+<!--  <script src="{% static 'js/demo/chart-area-demo.js' %}"></script>
+  <script src="{% static 'js/demo/chart-pie-demo.js' %}"></script>-->
+{% csrf_token %}
+<script>
+let urlParams = new URLSearchParams(window.location.search);
+//console.log(urlParams.get('houseId'));
+$('.key').text(urlParams.get('houseId'));
+//設置csrfmiddlewaretoken
+const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+//console.log(csrftoken);
 
-    initiAWEChartPromse(device)
-    .then(function(msgs) {
-      //console.log(color);
-    })
-    .then(function(){
-      //顯示折線圖
-        var myLineChart = new Chart(ctx, {
-            type: 'line',
+var ctx = document.getElementById("myAreaChart");  //折線圖div
+var ctx1 = document.getElementById("myPieChart");  //折線圖div
+var ctxBar = document.getElementById("myBarChart").getContext('2d');
+var ctxBar1 = document.getElementById("myBarChart1").getContext('2d');
+//Line
+let yAxis = new Array();      //宣告陣列, 放時間
+//var yTime = new Array();      //宣告陣列, 放時間,用來判斷時間是否重覆
+let datas1 = new Array();     //宣告陣列, 放mains1耗能
+let datas2 = new Array();     //宣告陣列, 放mains2耗能
+//Pie
+let labels = new Array();     //放置電器名稱
+let datas3 = new Array();     //宣告陣列, 放其他電器耗能
+let dataTime = new Array();   //存放時間
+let color = new Array();
+let str = '';
+//console.log(csrftoken);
+
+initiAWEChartPromse()
+.then(function(msgs) {
+    //console.log(color);
+})
+.then(function(){
+  //顯示折線圖
+  var myLineChart = new Chart(ctx, {
+  type: 'line',
   data: {
     //labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
     //labels: ["2021-11-01", "2021-11-02", "2021-11-03", "2021-11-04", "2021-11-05", "2021-11-06", "2021-11-07", "2021-11-08", "2021-11-09", "2021-11-10", "2021-11-11", "2021-11-12"],
     labels: yAxis,
     datasets: [{
-      label: device,
+      label: "MAINS 1",
       yAxisID: 'left-y-axis',
       lineTension: 0.3,
       backgroundColor: "rgba(78, 115, 223, 0.05)",
@@ -915,7 +754,24 @@
       pointBorderWidth: 2,
       data: datas1,
       //data: [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 100],
-    }
+    },
+    {
+      label: "MAINS 2",
+      yAxisID: 'right-y-axis',
+      lineTension: 0.3,
+      backgroundColor: "rgba(78, 115, 223, 0.05)",
+      borderColor: "rgba(28, 200, 138, 1)",
+      pointRadius: 3,
+      pointBackgroundColor: "rgba(28, 200, 138, 1)",
+      pointBorderColor: "rgba(28, 200, 138, 1)",
+      pointHoverRadius: 3,
+      pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
+      pointHoverBorderColor: "rgba(28, 200, 138, 1)",
+      pointHitRadius: 10,
+      pointBorderWidth: 2,
+      data: datas2,
+      //data: [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 100],
+    },
     ],
   },
   options: {
@@ -963,6 +819,25 @@
           borderDash: [2],
           zeroLineBorderDash: [2]
         }
+      },
+      {
+        id: 'right-y-axis',
+        position: 'right',
+        ticks: {
+          maxTicksLimit: 5,
+          padding: 10,
+          // Include a dollar sign in the ticks
+          callback: function(value, index, values) {
+            return value+'w';
+          }
+        },
+        gridLines: {
+          color: "rgb(234, 236, 244)",
+          zeroLineColor: "rgb(234, 236, 244)",
+          drawBorder: false,
+          borderDash: [2],
+          zeroLineBorderDash: [2]
+        }
       }
       ],
     },
@@ -992,17 +867,50 @@
     }
   }
 });
+
+//顯示圓餅圖
+var myPieChart = new Chart(ctx1, {
+  type: 'doughnut',
+  data: {
+    labels: labels,
+    datasets: [{
+      data: datas3,
+      backgroundColor: color,
+      hoverBackgroundColor: color,
+      hoverBorderColor: "rgba(234, 236, 244, 1)",
+    }],
+  },
+  options: {
+    maintainAspectRatio: false,
+    tooltips: {
+      backgroundColor: "rgb(255,255,255)",
+      bodyFontColor: "#858796",
+      borderColor: '#dddfeb',
+      borderWidth: 1,
+      xPadding: 15,
+      yPadding: 15,
+      displayColors: false,
+      caretPadding: 10,
+    },
+    legend: {
+      display: false
+    },
+    cutoutPercentage: 80,
+  },
+});
+//顯示Tag
+$('.mark').html(str);
+
 });
 
-
 let newArrCount = [];
-let labels_arr = [];
-newArrCount.push({{ category_list.sum.active__sum|floatformat:"2" }});
-labels_arr.push(device);
+{% for post in category_list %}
+   newArrCount.push({{ post.sum.active__sum|floatformat:"2" }});
+{% endfor %}
 //總用電量 -- 顯示直線圖
 var dataBar = {
     //labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],   //變數日期
-    labels: labels_arr,   //變數日期
+    labels: ['MAINS 1', 'MAINS 2'],   //變數日期
     datasets: [{
       label: "用電量",
       backgroundColor: "rgba(78, 115, 223,0.5)",
@@ -1034,7 +942,7 @@ var optionsBar = {
                   },
                   ticks: { display: true,
                            callback: function(value, index, values) {
-                              return value+"w";
+                              return value+"kW";
                            }
                          }
               }],
@@ -1048,21 +956,30 @@ var optionsBar = {
 };
     
 myChartBar = new Chart(ctxBar, {type: 'bar', data: dataBar, options: optionsBar}); //chart 設全域變數
-
-
 //月用電量 -- 顯示直線圖
 let datas_main_1 = [];
-datas_main_1.push({{ category_list.may.active__sum|floatformat:"2" }});
-datas_main_1.push({{ category_list.june.active__sum|floatformat:"2" }});
-datas_main_1.push({{ category_list.July.active__sum|floatformat:"2" }});
-datas_main_1.push({{ category_list.Aug.active__sum|floatformat:"2" }});
-
+let datas_main_2 = [];
+//mains_1
+{% for post in category_list %}
+var varName = '{{ post.device }}';
+if( varName =='mains_1' ){
+    datas_main_1.push({{ post.may.active__sum|floatformat:"2" }});
+    datas_main_1.push({{ post.jun.active__sum|floatformat:"2" }});
+    datas_main_1.push({{ post.july.active__sum|floatformat:"2" }});
+    datas_main_1.push({{ post.aug.active__sum|floatformat:"2" }});
+}else{
+    datas_main_2.push({{ post.may.active__sum|floatformat:"2" }});
+    datas_main_2.push({{ post.jun.active__sum|floatformat:"2" }});
+    datas_main_2.push({{ post.july.active__sum|floatformat:"2" }});
+    datas_main_2.push({{ post.aug.active__sum|floatformat:"2" }});
+}
+{% endfor %}
 var dataBar1 = {
     //labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],   //變數日期
     labels: ["5月", "6月", "7月", "8月"],   //變數日期
     datasets: [
         {
-        label: device,
+        label: "MAINS 1",
         data: datas_main_1,
         backgroundColor: [
           "rgba(10,20,30,0.3)",
@@ -1079,6 +996,25 @@ var dataBar1 = {
           "rgba(10,20,30,1)"
         ],
         borderWidth: 1
+      },
+      {
+        label: "MAINS 2",
+        data: datas_main_2,
+        backgroundColor: [
+          "rgba(50,150,200,0.3)",
+          "rgba(50,150,200,0.3)",
+          "rgba(50,150,200,0.3)",
+          "rgba(50,150,200,0.3)",
+          "rgba(50,150,200,0.3)"
+        ],
+        borderColor: [
+          "rgba(50,150,200,1)",
+          "rgba(50,150,200,1)",
+          "rgba(50,150,200,1)",
+          "rgba(50,150,200,1)",
+          "rgba(50,150,200,1)"
+        ],
+        borderWidth: 1
       }
     ]
 };
@@ -1089,7 +1025,7 @@ var optionsBar1 = {
       position: "top",
       text: "Bar Graph",
       fontSize: 18,
-      fontColor: "#111",
+      fontColor: "#111"
     },
     legend: {
       display: true,
@@ -1107,8 +1043,9 @@ var optionsBar1 = {
       }]
     }
 };
-myChartBar1 = new Chart(ctxBar1, {type: 'bar', data: dataBar1, options: optionsBar1}); //chart 設全域變數
-  </script>
+myChartBar = new Chart(ctxBar1, {type: 'bar', data: dataBar1, options: optionsBar1}); //chart 設全域變數
+
+</script>
 </body>
 
 </html>

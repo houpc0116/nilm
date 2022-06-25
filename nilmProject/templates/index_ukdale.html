@@ -388,9 +388,8 @@
           <!-- Content Row -->
           {% block content %}
           <div class="row">
-            <!-- Earnings (Monthly) Card Example -->
             {% for post in category_list %}
-            <div class="col-6 mb-4">
+            <div class="col-xs-12 col-lg-6 mb-4">
               <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
@@ -406,12 +405,12 @@
                 </div>
               </div>
             </div>
-            <div class="col-6 mb-4">
-                  <div class="card border-left-primary shadow h-100 py-2">
+            <div class="col-xs-12 col-lg-6 mb-4">
+                  <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><!--Earnings (Monthly)--><!-- Mains1-->{{ post.device }}</div>
+                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1"><!--Earnings (Monthly)--><!-- Mains1-->{{ post.device }}</div>
                       <div class="pb-2">總用電量</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">{{ post.sum.pw__sum }} w </div>
                     </div>
@@ -421,7 +420,7 @@
                   </div>
                 </div>
               </div>
-              </div>
+             </div>
             {% endfor %}
           </div>
           {% endblock  %}
@@ -429,29 +428,9 @@
           <!-- Content1 Row -->
           {% block content1 %}
           <div class="row">
-            {% for post in category_list %}  
-              {% for data in post.val %}
-              {% if forloop.counter|divisibleby:2 %}
-              <div class="col-3 mb-4">
-                  <div class="card border-left-success shadow h-100 py-2">
-                    <div class="card-body">
-                      <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                          <div class="text-xs font-weight-bold text-success text-uppercase mb-1"><!--Earnings (Monthly)--><!-- Mains1-->{{ data.device }}</div>
-                          <div class="pb-2"><!-- 4 -->{{ data.month }}月份用電量</div>
-                          <div class="h5 mb-0 font-weight-bold text-gray-800"><!--{{ post.april.pw__sum }}--> {{ data.val.pw__sum }} <!--{{ forloop.counter0 }}--> w </div>
-                     <!-- <div class="pb-2">5月份用電量</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ post.may.pw__sum }} w </div> -->
-                        </div>
-                    <!--<div class="col-auto">
-                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                    </div> -->
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {% else %}
-                <div class="col-3 mb-4">
+             {% for post in category_list %}
+                {% for data in post.val %}
+                <div class="col-xs-12 col-lg-3 mb-4">
                   <div class="card border-left-warning shadow h-100 py-2">
                     <div class="card-body">
                       <div class="row no-gutters align-items-center">
@@ -469,9 +448,8 @@
                     </div>
                   </div>
                 </div>
-                   {% endif %}
                 {% endfor %}
-            {% endfor %}
+             {% endfor %}
           </div>
           {% endblock %}
           <!-- Content1 Row End-->
@@ -532,7 +510,7 @@
                     <canvas id="myPieChart"></canvas>
                   </div>
                   <!-- <div class="mt-4 text-center small mark"> -->
-                  <div class="mt-4 mark">
+                  <div class="mt-4 text-center mark">
                     <!--<span class="mr-2">
                       <i class="fas fa-circle text-primary"></i> refrigerator
                     </span>
@@ -551,7 +529,7 @@
           <!-- Content Row -->
           <div class="row">
           <!-- Bar Chart -->
-            <div class="col-6">
+            <div class="col-xs-12 col-lg-6">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -579,7 +557,7 @@
               </div>
             </div>
             <!-- Bar Chart -->
-            <div class="col-6">
+            <div class="col-xs-12 col-lg-6">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -896,7 +874,7 @@ let datas_main_1 = [];
 {% endfor %}
 var dataBar1 = {
     //labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],   //變數日期
-    labels: ["2月", "3月" ,"4月", "5月", "6月", "7月", "8月", "9月", "10月"],   //變數日期
+    labels: ["5月", "6月", "7月", "8月"],   //變數日期
     datasets: [
         {
         label: "AGGREGATE_1",

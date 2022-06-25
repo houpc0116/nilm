@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.core import serializers
-from django.db.models import Sum
+from django.db.models import Sum, Q
 from interface.models import Sensor
 import hashlib, json, re
 from django.forms.models import model_to_dict
@@ -20,21 +20,25 @@ def getSensortData(request):
             return o.__str__()
 
     
-    # 計算本周第一天和最後一天
-    currentDateTime = datetime.datetime.now()
-    this_week_start = currentDateTime - timedelta(days=currentDateTime.weekday())
-    this_week_end = currentDateTime + timedelta(days=6-currentDateTime.weekday())
-    # 取得這星期的日期
-    week_date = []
-    for i in range(0, 7):
-        this_week_date = this_week_start + datetime.timedelta(days=i)
-        week_date.append(this_week_date.strftime('%Y-%m-%d'))
+    # 取得今天日期
+    todate = datetime.date.today()
 
     json_lists = []
-    obj_item = Sensor.objects.filter(device=device).filter(datetime__range = [this_week_start.strftime('%Y-%m-%d'), this_week_end.strftime('%Y-%m-%d')]).order_by('-datetime')
-    for post in obj_item:
-        json_dict=model_to_dict(post)
-        json_lists.append(json_dict)
-    
-    dataset = {'data':json_lists, 'week_date':week_date}
+    if device == "elec110":
+       # 電器 - 110 V
+       # 聚合
+       obj_item = Sensor.objects.filter(Q(device=device) | Q(device__contains='plug1')).filter(datetime__contains=todate).order_by('-datetime')
+       for post in obj_item:
+           json_dict=model_to_dict(post)
+           json_lists.append(json_dict)
+
+    else:
+        # 電器 - 220 V
+        # 聚合
+        obj_item = Sensor.objects.filter(Q(device=device) | Q(device__contains='plug2')).filter(datetime__contains=todate).order_by('-datetime')
+        for post in obj_item:
+            json_dict=model_to_dict(post)
+            json_lists.append(json_dict)
+
+    dataset = {'data':json_lists}
     return HttpResponse(json.dumps(dataset, default=myconverter), content_type='application/json')

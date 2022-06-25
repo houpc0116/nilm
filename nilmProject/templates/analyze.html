@@ -402,6 +402,7 @@
                 <option value='redd'>REDD</option>
                 <option value='ukdale'>UKDALE</option>
                 <option value='iawe'>iAWE</option>
+                <option value='sensor'>Sensor</option>
               </select>
             </div>
           </div>
@@ -414,7 +415,7 @@
                 <option value='dae'>DAE</option>
                 <option value='rnn'>RNN</option>
                 <option value='seq2'>ShortSeq2Point</option>
-                <option value='winrru'>WindowRRU</option>
+                <option value='wingru'>WindowGRU</option>
               </select>
             </div>
           </div>
@@ -436,7 +437,7 @@
           </div>
           <!-- DataTales Example -->
           <div class="row justify-content-md-center">
-            <div class="col-10">
+            <div class="col-xs-12 col-lg-10">
             <div class="card shadow mb-4">
               <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary"><!--DataTables Example-->Analyze(實際和預測 性能指標)</h6>
@@ -447,8 +448,20 @@
                     <img id='loading' src="{% static 'img/loading-buffering.gif' %}">
                     <img id='resultimg' src=''>
                   </div>
-                  <div class='d-flex justify-content-start'>
-                    <div id='resultmsg'></div>
+                  <!-- Table -->
+                  <div class='d-flex justify-content-center'>
+                   <!-- <div id='resultmsg'> -->
+                      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <tr align="center">
+                          <th>Relative error in total energy</th>
+                          <td><span class='rel'></span> </td>
+                        </tr>
+                        <tr align="center">
+                          <th>Mean absolute error(in Watts)</th>
+                          <td><span class="mean"></span> </td>
+                        </tr>
+                      </table>
+                   <!-- </div> -->
                   </div>
                 </div>
               </div>
@@ -532,6 +545,7 @@
 //設置csrfmiddlewaretoken
 const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
 $('#loading').hide();
+$('#dataTable').hide();
 </script>
 </body>
 

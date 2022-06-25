@@ -369,13 +369,13 @@
                   House
                 </a> -->
                 <button class="btn btn-primary dropdown-toggle" type="button" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <!--House-->附載裝置
+                      <!--House-->負載裝置
                 </button>
                 <div class="dropdown-menu dropdown-menu-right animated--fade-in" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="http://34.81.209.62:8088/sensor/?device=elec110">附載 1</a>
-                  <a class="dropdown-item" href="http://34.81.209.62:8088/sensor/?device=elec220">附載 2</a>
-                  <a class="dropdown-item" href="#">附載 3</a>
-                  <a class="dropdown-item" href="#">附載 4</a>
+                  <a class="dropdown-item" href="/sensor/?device=elec110">110 V</a>
+                  <a class="dropdown-item" href="/sensor/?device=elec220">220 V</a>
+                  <!--<a class="dropdown-item" href="/sensor/?device=plug1-1">筆記型電腦</a>
+                  <a class="dropdown-item" href="/sensor/?device=plug1-2">空氣清淨機</a>-->
                 <!--  <a class="dropdown-item" href="#">House 5</a>
                   <a class="dropdown-item" href="#">House 6</a> -->
                   <!--<div class="dropdown-divider"></div>
@@ -388,7 +388,7 @@
           <!-- Content Row -->
           <div class="row">
             <!-- Earnings (Monthly) Card Example -->
-            <div class="col-3 mb-4">
+            <div class="col-xs-12 col-lg-3 mb-4">
               <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
@@ -404,7 +404,7 @@
               </div>
             </div>
 
-            <div class="col-3 mb-4">
+            <div class="col-xs-12 col-lg-3 mb-4">
               <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
@@ -421,7 +421,7 @@
             </div>
 
             <!-- Earnings (Monthly) Card Example -->
-            <div class="col-3 mb-4">
+            <div class="col-xs-12 col-lg-3 mb-4">
               <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
@@ -438,7 +438,7 @@
             </div>
 
             <!-- Earnings (Monthly) Card Example -->
-            <div class="col-3 mb-4">
+            <div class="col-xs-12 col-lg-3 mb-4">
               <div class="card border-left-warning shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
@@ -454,7 +454,7 @@
               </div>
             </div>
 
-            <div class="col-4 mb-4">
+            <div class="col-xs-12 col-lg-4 mb-4">
               <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
@@ -471,7 +471,7 @@
             </div>
 
             <!-- Pending Requests Card Example -->
-            <div class="col-4 mb-4">
+            <div class="col-xs-12 col-lg-4 mb-4">
               <div class="card border-left-warning shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
@@ -487,7 +487,7 @@
               </div>
             </div>
             <!-- Pending Requests Card Example -->
-            <div class="col-4 mb-4">
+            <div class="col-xs-12 col-lg-4 mb-4">
               <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
@@ -501,6 +501,166 @@
                   </div>
                 </div>
               </div>
+            </div>
+            <div class="col-xs-12 col-lg-3 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-md font-weight-bold text-primary text-uppercase mb-1"><!--Earnings (Monthly)-->筆記型電腦</div>
+                        <div class="pb-2">電壓</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                           <span class='plug1-1_v'></span> V
+                        </div>
+                        <!--<div class="pb-2">5月份用電量</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800 may_{{ post.device }}">{{ post.may.pw__sum|floatformat:"2" }} w </div> -->
+                      </div>
+                      <!--<div class="col-auto">
+                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                      </div> -->
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-lg-3 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-md font-weight-bold text-primary text-uppercase mb-1"><!--Earnings (Monthly)-->筆記型電腦</div>
+                        <div class="pb-2">電流</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                           <span class='plug1-1_cu'></span> A
+                        </div>
+                        <!--<div class="pb-2">5月份用電量</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800 may_{{ post.device }}">{{ post.may.pw__sum|floatformat:"2" }} w </div> -->
+                      </div>
+                      <!--<div class="col-auto">
+                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                      </div> -->
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-lg-3 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-md font-weight-bold text-primary text-uppercase mb-1"><!--Earnings (Monthly)-->筆記型電腦</div>
+                        <div class="pb-2">有效功率</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                           <span class='plug1-1_active'></span> kW
+                        </div>
+                        <!--<div class="pb-2">5月份用電量</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800 may_{{ post.device }}">{{ post.may.pw__sum|floatformat:"2" }} w </div> -->
+                      </div>
+                      <!--<div class="col-auto">
+                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                      </div> -->
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-lg-3 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-md font-weight-bold text-primary text-uppercase mb-1"><!--Earnings (Monthly)-->筆記型電腦</div>
+                        <div class="pb-2">功率因數</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                           <span class='plug1-1_pf'></span> 
+                        </div>
+                        <!--<div class="pb-2">5月份用電量</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800 may_{{ post.device }}">{{ post.may.pw__sum|floatformat:"2" }} w </div> -->
+                      </div>
+                      <!--<div class="col-auto">
+                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                      </div> -->
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-lg-3 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-md font-weight-bold text-primary text-uppercase mb-1"><!--Earnings (Monthly)-->空氣清淨機</div>
+                        <div class="pb-2">電壓</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                           <span class='plug1-2_v'></span> V
+                        </div>
+                        <!--<div class="pb-2">5月份用電量</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800 may_{{ post.device }}">{{ post.may.pw__sum|floatformat:"2" }} w </div> -->
+                      </div>
+                      <!--<div class="col-auto">
+                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                      </div> -->
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-lg-3 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-md font-weight-bold text-primary text-uppercase mb-1"><!--Earnings (Monthly)-->空氣清淨機</div>
+                        <div class="pb-2">電流</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                           <span class='plug1-2_cu'></span> A
+                        </div>
+                        <!--<div class="pb-2">5月份用電量</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800 may_{{ post.device }}">{{ post.may.pw__sum|floatformat:"2" }} w </div> -->
+                      </div>
+                      <!--<div class="col-auto">
+                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                      </div> -->
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-lg-3 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-md font-weight-bold text-primary text-uppercase mb-1"><!--Earnings (Monthly)-->空氣清淨機</div>
+                        <div class="pb-2">有效功率</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                           <span class='plug1-2_active'></span> kW
+                        </div>
+                        <!--<div class="pb-2">5月份用電量</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800 may_{{ post.device }}">{{ post.may.pw__sum|floatformat:"2" }} w </div> -->
+                      </div>
+                      <!--<div class="col-auto">
+                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                      </div> -->
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-lg-3 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-md font-weight-bold text-primary text-uppercase mb-1"><!--Earnings (Monthly)-->空氣清淨機</div>
+                        <div class="pb-2">功率因數</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                           <span class='plug1-2_pf'></span> 
+                        </div>
+                        <!--<div class="pb-2">5月份用電量</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800 may_{{ post.device }}">{{ post.may.pw__sum|floatformat:"2" }} w </div> -->
+                      </div>
+                      <!--<div class="col-auto">
+                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                      </div> -->
+                    </div>
+                  </div>
+                </div>
             </div>
 
           </div>
@@ -537,12 +697,40 @@
               </div>
             </div>
 
+            <!-- Area Chart -->
+            <div class="col-xl-6 col-lg-6">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary"><!--Overview-->裝置即時資訊趨勢</h6>
+                  <div class="dropdown no-arrow">
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                      <div class="dropdown-header">Dropdown Header:</div>
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                  </div>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <div class="chart-area">
+                    <canvas id="myDevChart"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <!-- Pie Chart -->
             <div class="col-xl-6 col-lg-6">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">本週每日用電量(kW)</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">今日用電量(kW)</h6>
                   <div class="dropdown no-arrow">
                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -575,6 +763,48 @@
                 </div>
               </div>
             </div>
+
+            <!-- Pie Chart -->
+            <div class="col-xl-6 col-lg-6">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary"><!--Revenue Sources-->設備用電分布</h6>
+                  <div class="dropdown no-arrow">
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                      <div class="dropdown-header">Dropdown Header:</div>
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                  </div>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <div class="chart-pie pt-4 pb-2">
+                    <div class='pie-datetime'></div>
+                    <canvas id="myPieChart"></canvas>
+                  </div>
+                  <!-- <div class="mt-4 text-center small mark"> -->
+                  <div class="mt-4 text-center mark">
+                    <!--<span class="mr-2">
+                      <i class="fas fa-circle text-primary"></i> refrigerator
+                    </span>
+                    <span class="mr-2">
+                      <i class="fas fa-circle text-success"></i> dishwaser
+                    </span>
+                    <span class="mr-2">
+                      <i class="fas fa-circle text-info"></i> microwave
+                    </span>-->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           </div>
 
           <!-- Content Row -->
@@ -784,28 +1014,42 @@ let urlParams = new URLSearchParams(window.location.search);
 let devid = urlParams.get('device');
 //console.log(devid);
 if( devid == 'elec110'){
-   $('.title').text('elec110');
+   $('.title').text('110 V');
 }else if ( devid == 'elec220'){
-   $('.title').text('elec220');
+   $('.title').text('220 V');
+}else if ( devid == 'plug1-1'){
+   $('.title').text('筆記型電腦');
+}else if ( devid == 'plug1-2'){
+   $('.title').text('空氣清靜機');
 }
 //設置csrfmiddlewaretoken
 const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
 //console.log(csrftoken);
 var ctx = document.getElementById("myAreaChart");  //折線圖div
+var ctx1 = document.getElementById("myDevChart");  //折線圖div
+var ctx2 = document.getElementById("myPieChart");  //折線圖div
 var ctxBar = document.getElementById("barChart").getContext('2d');
 var ndate = getCurrentTime();
 var mondays = getDuration(ndate);
 var today = getCurrentDate();   //今日日期
 //console.log(mondays);
-var myLineChart = '';         //直線圖宣告
+var myLineChart = '';         //折線線圖宣告
+var myLineChart1 = '';         //折線線圖宣告
 var myChartBar = '';         //直線圖宣告
 var yAxis = new Array();      //宣告陣列, 放時間
-var arrayrang = 30;           //宣告圖表Rang
+var arrayrang = 60;           //宣告圖表Rang
 var datas1 = new Array();     //宣告陣列, 放有效功率
+
+let datas2 = new Array();     //宣告陣列, 放筆記型電腦有效功率
+let datas3 = new Array();     //宣告陣列, 放空氣清淨機有效功率
 //let datas2 = new Array();     //宣告陣列, 放電流
 var newArrDate = new Array();   //放置日期
 var newArrCount = new Array();  //放置每日總值
-
+//Pie
+let labels = new Array();     //放置電器名稱
+let datas4 = new Array();     //宣告陣列, 放其他電器耗能
+let color = new Array();
+let str = '';
 console.log(csrftoken);
 
 //初始化顯示折線圖
@@ -908,9 +1152,147 @@ data: {
     }
   }
 });
+//裝置即時資訊
+//顯示折線圖
+var myLineChart1 = new Chart(ctx1, {
+  type: 'line',
+  data: {
+    //labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    //labels: ["2021-11-01", "2021-11-02", "2021-11-03", "2021-11-04", "2021-11-05", "2021-11-06", "2021-11-07", "2021-11-08", "2021-11-09", "2021-11-10", "2021-11-11", "2021-11-12"],
+    labels: yAxis,
+    datasets: [{
+      label: "筆記型電腦",
+      yAxisID: 'left-y-axis',
+      lineTension: 0.3,
+      backgroundColor: "rgba(78, 115, 223, 0.05)",
+      borderColor: "rgba(78, 115, 223, 1)",
+      pointRadius: 3,
+      pointBackgroundColor: "rgba(78, 115, 223, 1)",
+      pointBorderColor: "rgba(78, 115, 223, 1)",
+      pointHoverRadius: 3,
+      pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
+      pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+      pointHitRadius: 10,
+      pointBorderWidth: 2,
+      data: datas2,
+      //data: [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 100],
+    },
+    {
+      label: "空氣清靜機",
+      yAxisID: 'right-y-axis',
+      lineTension: 0.3,
+      backgroundColor: "rgba(78, 115, 223, 0.05)",
+      borderColor: "rgba(28, 200, 138, 1)",
+      pointRadius: 3,
+      pointBackgroundColor: "rgba(28, 200, 138, 1)",
+      pointBorderColor: "rgba(28, 200, 138, 1)",
+      pointHoverRadius: 3,
+      pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
+      pointHoverBorderColor: "rgba(28, 200, 138, 1)",
+      pointHitRadius: 10,
+      pointBorderWidth: 2,
+      data: datas3,
+      //data: [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 100],
+    },
+    ],
+  },
+  options: {
+    title: {
+            display: false,
+            text: 'kW'
+            },
+    maintainAspectRatio: false,
+    layout: {
+      padding: {
+        left: 10,
+        right: 25,
+        top: 25,
+        bottom: 0
+      }
+    },
+    scales: {
+      xAxes: [{
+        time: {
+          unit: 'date'
+        },
+        gridLines: {
+          display: false,
+          drawBorder: false
+        },
+        ticks: {
+          maxTicksLimit: 7
+        }
+      }],
+      yAxes: [{
+        id: 'left-y-axis',
+        position: 'left',
+        ticks: {
+          maxTicksLimit: 5,
+          padding: 10,
+          // Include a dollar sign in the ticks
+          callback: function(value, index, values) {
+            return value+'kW';
+          }
+        },
+        gridLines: {
+          color: "rgb(234, 236, 244)",
+          zeroLineColor: "rgb(234, 236, 244)",
+          drawBorder: false,
+          borderDash: [2],
+          zeroLineBorderDash: [2]
+        }
+      },
+      {
+        id: 'right-y-axis',
+        position: 'right',
+        ticks: {
+          maxTicksLimit: 5,
+          padding: 10,
+          // Include a dollar sign in the ticks
+          callback: function(value, index, values) {
+            return value+'kW';
+          }
+        },
+        gridLines: {
+          color: "rgb(234, 236, 244)",
+          zeroLineColor: "rgb(234, 236, 244)",
+          drawBorder: false,
+          borderDash: [2],
+          zeroLineBorderDash: [2]
+        }
+      }
+      ],
+    },
+    legend: {
+      display: true
+    },
+    tooltips: {
+      backgroundColor: "rgb(255,255,255)",
+      bodyFontColor: "#858796",
+      titleMarginBottom: 10,
+      titleFontColor: '#6e707e',
+      titleFontSize: 14,
+      borderColor: '#dddfeb',
+      borderWidth: 1,
+      xPadding: 15,
+      yPadding: 15,
+      displayColors: false,
+      intersect: false,
+      mode: 'index',
+      caretPadding: 10,
+      callbacks: {
+        label: function(tooltipItem, chart) {
+          var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+          return datasetLabel + ': ' + tooltipItem.yLabel+' kW';
+        }
+      }
+    }
+  }
+});
+
 
 //當月每日用電量
-initChartPromse(urlParams.get('device'))
+initChartPromse(devid)
 .then(function(msgs) {
    //顯示直線圖 -- Bar
   var dataBar = {
@@ -960,6 +1342,39 @@ initChartPromse(urlParams.get('device'))
     };
     
     myChartBar = new Chart(ctxBar, {type: 'bar', data: dataBar, options: optionsBar}); //chart 設全域變數
+
+//顯示圓餅圖
+var myPieChart = new Chart(ctx2, {
+  type: 'doughnut',
+  data: {
+    labels: labels,
+    datasets: [{
+      data: datas4,
+      backgroundColor: color,
+      hoverBackgroundColor: color,
+      hoverBorderColor: "rgba(234, 236, 244, 1)",
+    }],
+  },
+  options: {
+    maintainAspectRatio: false,
+    tooltips: {
+      backgroundColor: "rgb(255,255,255)",
+      bodyFontColor: "#858796",
+      borderColor: '#dddfeb',
+      borderWidth: 1,
+      xPadding: 15,
+      yPadding: 15,
+      displayColors: false,
+      caretPadding: 10,
+    },
+    legend: {
+      display: false
+    },
+    cutoutPercentage: 80,
+  },
+});
+//顯示Tag
+$('.mark').html(str);
 })
 .then(function(){
 //MQTT
@@ -976,40 +1391,74 @@ client.on('connect', ()=>{
   console.log('connected.');
   //initChartPromse(urlParams.get('device'));  //讀取資料庫
   client.subscribe(devid);
+  if(devid == 'elec110'){
+    client.subscribe('plug1-1');
+    client.subscribe('plug1-2');
+  }
   client.on("message", function (topic, payload) {
-    //console.log(payload);
     let message = [topic, payload].join(": ");
-    //console.log(message);
-    //console.log(typeof(message));  //String
+    //console.log(message);  //String
     let obj = message.split(': ');
-    let json = JSON.parse(obj[1]);
-    //console.log(json);
-    $('.vo').text(json['v']);
-    $('.cu').text(json['i']);
-    $('.activeVal').text(json['active_power']);
-    $('.reactive').text(json['reactive_power']);
-    $('.apparent').text(json['apparent_power']);
-    $('.pf').text(json['pf']);
-    $('.freq').text(json['freq']);
+    if(obj[0] == 'elec110' || obj[0] == 'elec220'){
+      let json = JSON.parse(obj[1]);
+      //console.log(json);
+      $('.vo').text(json['v']);
+      $('.cu').text(json['i']);
+      $('.activeVal').text(json['active_power']);
+      $('.reactive').text(json['reactive_power']);
+      $('.apparent').text(json['apparent_power']);
+      $('.pf').text(json['pf']);
+      $('.freq').text(json['freq']);
     
-    let date_Time = getCurrentTime1();
-    $('.dateTime').text(date_Time);
-    //console.log(typeof(yAxis[0]));
-    //console.log(typeof(datas1[0]));
-    //折線圖
-    if(yAxis.length>arrayrang){
+      let date_Time = getCurrentTime1();
+      $('.dateTime').text(date_Time);
+      //console.log(typeof(yAxis[0]));
+      //console.log(typeof(datas1[0]));
+      //折線圖
+      if(yAxis.length>arrayrang){
         yAxis.shift();
-    }
+      }
 
-    if(datas1.length>arrayrang){
+      if(datas1.length>arrayrang){
         datas1.shift();
+      }
+      yAxis.push(date_Time);
+      datas1.push(parseFloat(json['active_power']));
+      myLineChart.update();   //更新圖表
+    }else if(obj[0] == 'plug1-1'){
+      let json = JSON.parse(obj[1]);
+
+      $('.plug1-1_v').text(json['v']);
+      $('.plug1-1_cu').text(json['i']);
+      $('.plug1-1_active').text(json['active_power']);
+      $('.plug1-1_pf').text(json['pf']);
+
+      if(datas2.length>arrayrang){
+        datas2.shift();
+      }
+
+      datas2.push(parseFloat(json['active_power']));
+      myLineChart1.update();   //更新圖表
+    }else if(obj[0] == 'plug1-2'){
+      let json = JSON.parse(obj[1]);
+
+      $('.plug1-2_v').text(json['v']);
+      $('.plug1-2_cu').text(json['i']);
+      $('.plug1-2_active').text(json['active_power']);
+      $('.plug1-2_pf').text(json['pf']);
+
+      if(datas3.length>arrayrang){
+        datas3.shift();
+      }
+
+      datas3.push(parseFloat(json['active_power']));
+      myLineChart1.update();   //更新圖表
     }
-    yAxis.push(date_Time);
-    datas1.push(parseFloat(json['active_power']));
-    myLineChart.update();   //更新圖表
   });
   //client.publish("mee", "hello");    
 });
+
+
 });
 </script>
 </body>
