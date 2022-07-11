@@ -28,8 +28,8 @@ from ukdale.views import showInfo1, getChartDataJson1
 from iawe.views import showInfo2, getChartDataJson2
 
 from analyze.views import redirectionPage, showResult   #Analyze Interface Page
-
 #router = DefaultRouter()
+from webhooks.views import showMLResult
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -47,4 +47,5 @@ urlpatterns = [
     url(r'^iawedataset/', getChartDataJson2), #產出iAWE圖表資料
     url(r'^analyze/', redirectionPage),       #analyze 頁面
     url(r'^predict/', showResult),       #analyze 頁面
+    path('data/<str:fileName>/', showMLResult),
 ]

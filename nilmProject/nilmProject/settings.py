@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'nilm',
     'ukdale',
     'iawe',
-    'analyze'
+    'analyze',
+    'webhooks'
 ]
 
 MIDDLEWARE = [
