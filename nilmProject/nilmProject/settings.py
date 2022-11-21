@@ -45,7 +45,9 @@ INSTALLED_APPS = [
     'nilm',
     'ukdale',
     'iawe',
-    'analyze'
+    'analyze',
+    'webhooks',
+    'status'
 ]
 
 MIDDLEWARE = [
@@ -99,7 +101,7 @@ DATABASES = {
 
         'PASSWORD': 'awin',
 
-        'HOST': '35.201.210.50',
+        'HOST': '127.0.0.1',
 
         'PORT': '3306',
     }
@@ -157,3 +159,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+

@@ -14,7 +14,8 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
 from django.conf.urls import include, re_path, url, handler404
 from django.views.generic import TemplateView
 from rest_framework.routers import DefaultRouter
@@ -28,11 +29,17 @@ from ukdale.views import showInfo1, getChartDataJson1
 from iawe.views import showInfo2, getChartDataJson2
 
 from analyze.views import redirectionPage, showResult   #Analyze Interface Page
-
 #router = DefaultRouter()
+from webhooks.views import showMLResult
+
+from status import views
+
+router = DefaultRouter()
+router.register(r'status', views.StatusViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    url(r'^api/', include(router.urls)),
     url(r'^sensor/', redirectWeb),      #sensor 頁面
     url(r'^statistic/', getSensortData), #產出圖表資料
 #    url(r'^api/sensor/', SensorViewSet.as_view()), #sensor Data
@@ -47,4 +54,6 @@ urlpatterns = [
     url(r'^iawedataset/', getChartDataJson2), #產出iAWE圖表資料
     url(r'^analyze/', redirectionPage),       #analyze 頁面
     url(r'^predict/', showResult),       #analyze 頁面
+    path('data/<str:fileName>/', showMLResult),
+    
 ]

@@ -369,7 +369,7 @@
                   House
                 </a> -->
                 <button class="btn btn-primary dropdown-toggle" type="button" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <!--House-->負載裝置
+                      <!--House-->附載裝置
                 </button>
                 <div class="dropdown-menu dropdown-menu-right animated--fade-in" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="/sensor/?device=elec110">110 V</a>
@@ -388,7 +388,7 @@
           <!-- Content Row -->
           <div class="row">
             <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xs-12 col-lg-3 mb-4">
+            <div class="col-3 mb-4">
               <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
@@ -404,7 +404,7 @@
               </div>
             </div>
 
-            <div class="col-xs-12 col-lg-3 mb-4">
+            <div class="col-3 mb-4">
               <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
@@ -421,7 +421,7 @@
             </div>
 
             <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xs-12 col-lg-3 mb-4">
+            <div class="col-3 mb-4">
               <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
@@ -438,7 +438,7 @@
             </div>
 
             <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xs-12 col-lg-3 mb-4">
+            <div class="col-3 mb-4">
               <div class="card border-left-warning shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
@@ -454,7 +454,7 @@
               </div>
             </div>
 
-            <div class="col-xs-12 col-lg-4 mb-4">
+            <div class="col-4 mb-4">
               <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
@@ -471,7 +471,7 @@
             </div>
 
             <!-- Pending Requests Card Example -->
-            <div class="col-xs-12 col-lg-4 mb-4">
+            <div class="col-4 mb-4">
               <div class="card border-left-warning shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
@@ -487,7 +487,7 @@
               </div>
             </div>
             <!-- Pending Requests Card Example -->
-            <div class="col-xs-12 col-lg-4 mb-4">
+            <div class="col-4 mb-4">
               <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
@@ -502,7 +502,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-xs-12 col-lg-3 mb-4">
+            <div class="col-3 mb-4">
                 <div class="card border-left-primary shadow h-100 py-2">
                   <div class="card-body">
                     <div class="row no-gutters align-items-center">
@@ -522,7 +522,7 @@
                   </div>
                 </div>
             </div>
-            <div class="col-xs-12 col-lg-3 mb-4">
+            <div class="col-3 mb-4">
                 <div class="card border-left-primary shadow h-100 py-2">
                   <div class="card-body">
                     <div class="row no-gutters align-items-center">
@@ -542,7 +542,7 @@
                   </div>
                 </div>
             </div>
-            <div class="col-xs-12 col-lg-3 mb-4">
+            <div class="col-3 mb-4">
                 <div class="card border-left-primary shadow h-100 py-2">
                   <div class="card-body">
                     <div class="row no-gutters align-items-center">
@@ -562,7 +562,7 @@
                   </div>
                 </div>
             </div>
-            <div class="col-xs-12 col-lg-3 mb-4">
+            <div class="col-3 mb-4">
                 <div class="card border-left-primary shadow h-100 py-2">
                   <div class="card-body">
                     <div class="row no-gutters align-items-center">
@@ -582,7 +582,7 @@
                   </div>
                 </div>
             </div>
-            <div class="col-xs-12 col-lg-3 mb-4">
+            <div class="col-3 mb-4">
                 <div class="card border-left-primary shadow h-100 py-2">
                   <div class="card-body">
                     <div class="row no-gutters align-items-center">
@@ -602,7 +602,7 @@
                   </div>
                 </div>
             </div>
-            <div class="col-xs-12 col-lg-3 mb-4">
+            <div class="col-3 mb-4">
                 <div class="card border-left-primary shadow h-100 py-2">
                   <div class="card-body">
                     <div class="row no-gutters align-items-center">
@@ -622,7 +622,7 @@
                   </div>
                 </div>
             </div>
-            <div class="col-xs-12 col-lg-3 mb-4">
+            <div class="col-3 mb-4">
                 <div class="card border-left-primary shadow h-100 py-2">
                   <div class="card-body">
                     <div class="row no-gutters align-items-center">
@@ -642,7 +642,7 @@
                   </div>
                 </div>
             </div>
-            <div class="col-xs-12 col-lg-3 mb-4">
+            <div class="col-3 mb-4">
                 <div class="card border-left-primary shadow h-100 py-2">
                   <div class="card-body">
                     <div class="row no-gutters align-items-center">
@@ -1292,7 +1292,7 @@ var myLineChart1 = new Chart(ctx1, {
 
 
 //當月每日用電量
-initChartPromse(devid)
+initChartPromse(urlParams.get('device'))
 .then(function(msgs) {
    //顯示直線圖 -- Bar
   var dataBar = {
@@ -1379,12 +1379,12 @@ $('.mark').html(str);
 .then(function(){
 //MQTT
 let options = {
-    username: 'houpc16',       // 可讀寫的測試帳戶
-    password: 'awin_nilm' // 測試帳戶的密碼
+    username: 'awinlab',       // 可讀寫的測試帳戶
+    password: 'awinlab' // 測試帳戶的密碼
 }
 var client = mqtt.connect(
-    // test.mosquitto.org 的 wss 使用 8081 埠
-    "ws://34.81.209.62:8080",
+    //test.mosquitto.org 的 wss 使用 8081 埠
+    "ws://nilm.devkit.cc:8080",
     options // 連接時指定選項登入
 );
 client.on('connect', ()=>{
@@ -1399,7 +1399,7 @@ client.on('connect', ()=>{
     let message = [topic, payload].join(": ");
     //console.log(message);  //String
     let obj = message.split(': ');
-    if(obj[0] == 'elec110' || obj[0] == 'elec220'){
+    if(obj[0] == 'elec110'){
       let json = JSON.parse(obj[1]);
       //console.log(json);
       $('.vo').text(json['v']);
